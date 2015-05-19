@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "stable"
+  - "0.10"
+  - "iojs"
+before_install: npm install -g mocha
+script: mocha
