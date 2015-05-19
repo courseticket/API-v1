@@ -1,23 +1,29 @@
-var assert = require("assert");
-describe('Array', function(){
-    describe('#indexOf()', function(){
-        it('should return -1 when the value is not present', function(){
+var assert = require('assert'),
+    https = require('https');
+describe('Set up', function () {
 
-            assert.equal(-1, [1,2,3].indexOf(5));
-            assert.equal(-1, [1,2,3].indexOf(0));
-        })
-    })
-});
-describe('Environment', function (){
-    describe('JWT_KEY', function(){
+    describe('One test', function() {
+        it('should always pass', function() {
+            assert.equal(1, 1);
+        });
+
+        it('should be able to makes https query with status 200', function(done) {
+            https.get('https://www.courseticket.com/', function (res) {
+                assert.equal(200, res.statusCode);
+                done();
+            });
+        });
+    });
+
+    describe('Environment JWT_KEY', function() {
         var key = process.env.JWT_KEY;
 
-        it('should be type string', function(){
+        it('should be type string', function() {
             assert.equal('string', typeof key);
         });
 
-        it('should contain 2 dots', function(){
+        it('should contain 2 dots', function() {
             assert.equal(2, (key.match(new RegExp("[.]", "g")) || []).length);
-        })
-    })
+        });
+    });
 });
